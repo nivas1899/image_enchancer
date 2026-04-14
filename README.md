@@ -1,108 +1,61 @@
-# Image Enhancer Pro
+# 🖼️ ImageEnchancer Pro
 
-🚀 AI-powered image enhancement tool with 4K & 8K resolution upscaling.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat&logo=python)](https://www.python.org/downloads/)
+[![Flask](https://img.shields.io/badge/Flask-Web_App-red?style=flat&logo=flask)](https://flask.palletsprojects.com/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-Image_Processing-green?style=flat&logo=opencv)](https://opencv.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## ✨ Features
-
-- **4K & 8K Upscaling** - Transform images to ultra-high resolution
-- **6 Enhancement Presets** - Photo, Artwork, Text, Soft, Vivid, HDR
-- **Modern Web UI** - Beautiful dark theme with animations
-- **Batch Processing** - Process multiple images at once
-- **Drag & Drop Upload** - Easy file and folder upload
-- **Real-time Progress** - Live progress tracking
-- **Before/After Comparison** - See the difference
-
-## 🚀 Quick Start
-
-### Installation
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run
-
-```bash
-python app.py
-```
-
-Open your browser and go to: **http://localhost:5000**
-
-## 📸 Screenshot
-
-![Image Enhancer Pro](screenshot.png)
-
-## 🛠️ Tech Stack
-
-- **Backend:** Python Flask
-- **Image Processing:** Pillow (PIL)
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript
-- **UI Framework:** Custom CSS with animations
-- **Icons:** Font Awesome
-
-## 🎯 Supported Resolutions
-
-- 720p (1280×720)
-- 1080p (1920×1080)
-- 2K (2560×1440)
-- 4K (3840×2160)
-- 8K (7680×4320)
-
-## 🎨 Enhancement Presets
-
-1. **Photo** - Balanced enhancement for general photography
-2. **Artwork** - Optimized for digital art and illustrations
-3. **Text** - Maximum clarity for documents and screenshots
-4. **Soft** - Gentle processing for portraits
-5. **Vivid** - Saturated colors for landscapes
-6. **HDR** - High dynamic range effect
-
-## 📝 Supported Formats
-
-- JPG / JPEG
-- PNG
-- GIF
-- BMP
-- TIFF
-- WebP
-
-## 🎮 Usage
-
-1. **Upload** - Drag & drop images or click to browse
-2. **Configure** - Select resolution, preset, and settings
-3. **Enhance** - Click the enhance button
-4. **Download** - Get your enhanced images
-
-## 🔧 Advanced Settings
-
-- Sharpen (1.0 - 3.0)
-- Contrast (0.5 - 2.0)
-- Saturation (0.5 - 2.0)
-- Quality (50% - 100%)
-- Denoise toggle
-- Edge enhance toggle
-
-## 📦 Project Structure
-
-```
-.
-├── app.py                 # Flask backend
-├── requirements.txt       # Python dependencies
-├── static/
-│   ├── style.css         # Custom CSS
-│   └── app.js            # Frontend JavaScript
-└── templates/
-    └── index.html        # Main HTML template
-```
-
-## 🤝 Contributing
-
-Feel free to fork and contribute!
-
-## 📄 License
-
-MIT License - Free for personal and commercial use.
+**ImageEnchancer Pro** is a powerful Python-based utility for upscaling, denoising, and professionally enhancing images. It features both a modern web interface and a lightweight desktop GUI, making high-quality image processing accessible to everyone.
 
 ---
 
-**Built with ❤️ using Python and modern web technologies**
+## ⚡ Key Features
+
+- **🚀 AI-Driven Upscaling**: Increase image resolution without losing clarity.
+- **🎨 Noise Reduction**: Remove grain and artifacts from low-light photos.
+- **🌐 Web Dashboard**: Upload and enhance images directly through a sleek web UI.
+- **🖥️ Desktop GUI**: A standalone Tkinter-based application for local processing.
+- **🔄 Bulk Processing**: Enhance entire folders of images in one pass.
+
+## 🛠️ Tech Stack
+
+- **Core Engine**: Python, OpenCV, PIL (Pillow)
+- **Web App**: Flask, HTML5, CSS3, JavaScript
+- **Desktop UI**: Tkinter
+- **Packaging**: NPM (for frontend assets)
+
+## 📂 Project Structure
+
+```text
+.
+├── enhancer.py        # Core processing logic
+├── enhancer_gui.py    # Desktop GUI application
+├── web/               # Flask Web Application
+│   ├── app.py         # Web server
+│   ├── static/        # Styles and Scripts
+│   └── templates/     # UI layouts
+└── requirements.txt   # Python dependencies
+```
+
+## 📖 Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/nivas1899/image_enchancer.git
+   cd image_enchancer
+   ```
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Run the Web App**:
+   ```bash
+   cd web && python app.py
+   ```
+4. **Run the Desktop App**:
+   ```bash
+   python enhancer_gui.py
+   ```
+
+---
+Created with ❤️ by [nivas1899](https://github.com/nivas1899)
