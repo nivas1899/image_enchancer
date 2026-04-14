@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancer Pro - 4K & 8K AI Enhancement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="bg-particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-magic"></i>
+            <span>Image Enhancer Pro</span>
+        </div>
+        <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#" class="nav-link nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">
+                <span class="gradient-text">Transform</span> Your Images
+            </h1>
+            <p class="hero-subtitle">
+                AI-powered enhancement to 4K & 8K resolution with stunning clarity and detail
+            </p>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section" id="upload">
+            <div class="upload-container" id="dropZone">
+                <div class="upload-content">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Drop your image here</h3>
+                    <p>or <span class="upload-link">browse</span> to upload</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                    <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+                    <div class="upload-formats">
+                        <span>Supports: JPG, PNG, GIF, BMP, TIFF, WebP</span>
+                        <span class="upload-hint">• Drag files or entire folders</span>
+                    </div>
+                </div>
+                <div class="upload-wave"></div>
+            </div>
+        </section>
+
+        <!-- Preview & Settings Section -->
+        <section class="workspace-section" id="workspace" style="display: none;">
+            <div class="workspace-grid">
+                <!-- Preview Panel -->
+                <div class="panel preview-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-image"></i> Preview</h3>
+                        <span class="file-info" id="fileInfo"></span>
+                    </div>
+                    <div class="preview-container">
+                        <div class="preview-wrapper">
+                            <img id="previewImage" src="" alt="Preview">
+                            <div class="preview-overlay">
+                                <div class="image-dimensions" id="imageDimensions"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Panel -->
+                <div class="panel settings-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-sliders-h"></i> Enhancement Settings</h3>
+                    </div>
+                    
+                    <div class="settings-content">
+                        <!-- Resolution -->
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <i class="fas fa-expand"></i>
+                                Target Resolution
+                            </label>
+                            <div class="resolution-grid" id="resolutionGrid">
+                                <div class="resolution-card" data-value="720p">
+                                    <span class="res-badge">HD</span>
+                                    <span class="res-value">720p</span>
+                                    <span class="res-dims">1280×720</span>
+                                </div>
+                                <div class="resolution-card" data-value="1080p">
+                                    <span class="res-badge">FHD</span>
+                                    <span class="res-value">1080p</span>
+                                    <span class="res-dims">1920×1080</span>
+                                </div>
+                                <div class="resolution-card" data-value="2k">
+                                    <span class="res-badge">QHD</span>
+                                    <span class="res-value">2K</span>
+                                    <span class="res-dims">2560×1440</span>
+                                </div>
+                                <div class="resolution-card active" data-value="4k">
+                                    <span class="res-badge premium">UHD</span>
+                                    <span class="res-value">4K</span>
+                                    <span class="res-dims">3840×2160</span>
+                                </div>
+                                <div class="resolution-card premium-card" data-value="8k">
+                                    <span class="res-badge premium">8K</span>
+                                    <span class="res-value">8K</span>
+                                    <span class="res-dims">7680×4320</span>
+                                    <i class="fas fa-crown crown-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Presets -->
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <i class="fas fa-palette"></i>
+                                Enhancement Preset
+                            </label>
+                            <div class="preset-carousel" id="presetCarousel">
+                                <div class="preset-card active" data-preset="photo">
+                                    <div class="preset-icon"><i class="fas fa-camera"></i></div>
+                                    <span class="preset-name">Photo</span>
+                                    <span class="preset-desc">Balanced enhancement</span>
+                                </div>
+                                <div class="preset-card" data-preset="artwork">
+                                    <div class="preset-icon"><i class="fas fa-paint-brush"></i></div>
+                                    <span class="preset-name">Artwork</span>
+                                    <span class="preset-desc">Digital art optimized</span>
+                                </div>
+                                <div class="preset-card" data-preset="text">
+                                    <div class="preset-icon"><i class="fas fa-font"></i></div>
+                                    <span class="preset-name">Text</span>
+                                    <span class="preset-desc">Maximum clarity</span>
+                                </div>
+                                <div class="preset-card" data-preset="soft">
+                                    <div class="preset-icon"><i class="fas fa-feather"></i></div>
+                                    <span class="preset-name">Soft</span>
+                                    <span class="preset-desc">Gentle processing</span>
+                                </div>
+                                <div class="preset-card" data-preset="vivid">
+                                    <div class="preset-icon"><i class="fas fa-sun"></i></div>
+                                    <span class="preset-name">Vivid</span>
+                                    <span class="preset-desc">Saturated colors</span>
+                                </div>
+                                <div class="preset-card" data-preset="hdr">
+                                    <div class="preset-icon"><i class="fas fa-bolt"></i></div>
+                                    <span class="preset-name">HDR</span>
+                                    <span class="preset-desc">Dynamic range</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Algorithm -->
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <i class="fas fa-microchip"></i>
+                                Algorithm
+                            </label>
+                            <select class="custom-select" id="algorithm">
+                                <option value="lanczos">Lanczos (Best Quality)</option>
+                                <option value="bicubic">Bicubic (Balanced)</option>
+                                <option value="bilinear">Bilinear (Fast)</option>
+                            </select>
+                        </div>
+
+                        <!-- Fit Mode -->
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <i class="fas fa-crop-alt"></i>
+                                Fit Mode
+                            </label>
+                            <div class="fit-toggle" id="fitToggle">
+                                <button class="fit-btn active" data-fit="fit">Fit</button>
+                                <button class="fit-btn" data-fit="fill">Fill</button>
+                                <button class="fit-btn" data-fit="stretch">Stretch</button>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Settings Toggle -->
+                        <div class="advanced-toggle" id="advancedToggle">
+                            <span>Advanced Settings</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <!-- Advanced Settings -->
+                        <div class="advanced-settings" id="advancedSettings" style="display: none;">
+                            <div class="slider-group">
+                                <label class="slider-label">
+                                    <span>Sharpen</span>
+                                    <span class="slider-value" id="sharpenValue">1.5</span>
+                                </label>
+                                <input type="range" class="custom-slider" id="sharpen" min="1" max="3" step="0.1" value="1.5">
+                            </div>
+
+                            <div class="slider-group">
+                                <label class="slider-label">
+                                    <span>Contrast</span>
+                                    <span class="slider-value" id="contrastValue">1.1</span>
+                                </label>
+                                <input type="range" class="custom-slider" id="contrast" min="0.5" max="2" step="0.1" value="1.1">
+                            </div>
+
+                            <div class="slider-group">
+                                <label class="slider-label">
+                                    <span>Saturation</span>
+                                    <span class="slider-value" id="saturationValue">1.05</span>
+                                </label>
+                                <input type="range" class="custom-slider" id="saturation" min="0.5" max="2" step="0.05" value="1.05">
+                            </div>
+
+                            <div class="slider-group">
+                                <label class="slider-label">
+                                    <span>Quality</span>
+                                    <span class="slider-value" id="qualityValue">95%</span>
+                                </label>
+                                <input type="range" class="custom-slider" id="quality" min="50" max="100" step="1" value="95">
+                            </div>
+
+                            <div class="checkbox-group">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="denoise" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-label">Denoise</span>
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="edgeEnhance">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-label">Edge Enhance</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button class="enhance-btn" id="enhanceBtn">
+                            <span class="btn-text">
+                                <i class="fas fa-wand-magic-sparkles"></i>
+                                Enhance Image
+                            </span>
+                            <span class="btn-loader" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Processing...
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-card">
+                <div class="progress-icon">
+                    <i class="fas fa-cog fa-spin"></i>
+                </div>
+                <h3>Enhancing your image...</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="progress-glow"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">0%</span>
+                </div>
+                <p class="progress-status" id="progressStatus">Initializing...</p>
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section class="result-section" id="resultSection" style="display: none;">
+            <div class="result-card">
+                <div class="result-header">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2>Enhancement Complete!</h2>
+                    <p>Your image has been successfully enhanced</p>
+                </div>
+
+                <div class="comparison-container">
+                    <div class="comparison-wrapper">
+                        <div class="image-box original">
+                            <span class="image-label">Original</span>
+                            <img id="originalImage" src="" alt="Original">
+                        </div>
+                        <div class="image-box enhanced">
+                            <span class="image-label">Enhanced</span>
+                            <img id="enhancedImage" src="" alt="Enhanced">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-stats" id="resultStats">
+                    <!-- Stats will be inserted here -->
+                </div>
+
+                <div class="result-actions">
+                    <button class="action-btn primary" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                    <button class="action-btn secondary" id="enhanceAnotherBtn">
+                        <i class="fas fa-plus"></i>
+                        Enhance Another
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>4K & 8K Support</h3>
+                    <p>Transform images to ultra-high resolutions with stunning clarity</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered</h3>
+                    <p>Smart algorithms that preserve details while enhancing quality</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized processing for quick turnaround times</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your images are processed securely and never stored permanently</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Image Enhancer Pro. All rights reserved.</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage">Notification</span>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

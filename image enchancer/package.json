@@ -1,0 +1,10 @@
+{
+  "name": "image-enhancer",
+  "version": "1.0.0",
+  "description": "Image enhancer supporting 4K and 8K resolutions",
+  "main": "enhancer.py",
+  "scripts": {
+    "start": "python enhancer.py"
+  },
+  "dependencies": {}
+}
